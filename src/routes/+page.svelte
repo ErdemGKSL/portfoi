@@ -13,9 +13,10 @@
 		/>
 	</div>
 	<div class="right">
-		<h1>{locale.title}</h1>
+		<h1><span>Erdem</span> Göksel</h1>
 		<h2>{locale.subtitle}</h2>
     <h6>{locale.whoami}</h6>
+		<p>{locale.whoami_extra}</p>
 	</div>
 </div>
 
@@ -34,9 +35,11 @@
 			align-items: center;
 			width: 600px;
 			padding: 2rem;
-
+			// filter gray
+			transition: filter 0.5s ease-in-out;
+			
       @media screen and (max-width: 768px) {
-        width: 350px;
+				width: 450px;
       }
 
 			img {
@@ -56,22 +59,59 @@
 			padding: 0 2rem;
 
 			h1 {
-				font-size: 3rem;
+				font-size: 5rem;
 				font-weight: 700;
         min-width: 300px;
 				color: var(--color-text);
+				& > span {
+					color: var(--color-secondary);
+					transition: color 0.5s ease-in-out;
+					@media screen and (max-width: 1300px) {
+						color: var(--color-primary)
+					}
+				}
+
+				@media screen and (max-width: 768px) {
+					font-size: 2.5rem;
+				}
 			}
 
 			h2 {
-				font-size: 1.5rem;
+				font-size: 3rem;
 				font-weight: 400;
         min-width: 300px;
 				color: var(--color-text);
+
+				@media screen and (max-width: 768px) {
+					font-size: 1.5rem;
+				}
 			}
 
+
+
       h6 {
+				padding-top: 10px;
+				font-size: 1rem;
         max-width: 600px;
+				color: var(--color-text);
+
+				@media screen and (max-width: 768px) {
+					font-size: 0.8rem;
+				}
       }
+
+			p {
+				padding-top: 10px;
+				padding-bottom: 60px;
+				font-size: 1rem;
+				max-width: 600px;
+				font-weight: 100;
+				color: var(--color-text);
+
+				@media screen and (max-width: 768px) {
+					font-size: 0.8rem;
+				}
+			}
 		}
 	}
 </style>

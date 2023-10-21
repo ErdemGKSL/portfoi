@@ -10,6 +10,8 @@
 	let bottomNavBar: HTMLDivElement;
 	let page: HTMLDivElement;
 
+	let languageTransition = false;
+
 	$: locale = $data.i18n[$data.lang];
 
 	$: {
@@ -32,8 +34,21 @@
 		bottomNavBar.classList.add("animation");
 		page.classList.add("animation");
 	});
+
+	function routerTransition() {
+		topNavBar.classList.remove("animation");
+		// bottomNavBar.classList.remove("animation");
+		// page.classList.remove("animation");
+
+		setTimeout(() => {
+			topNavBar.classList.add("animation");
+			// bottomNavBar.classList.add("animation");
+			// page.classList.add("animation");
+		}, 750);
+	}
 </script>
 
+<div class="h-shape" />
 <div class="main">
 	<div class="left" bind:this={page}>
 		<slot />
@@ -41,25 +56,34 @@
 
 	<div class="right">
 		<nav>
-			<div class="top" bind:this={topNavBar}>
-				<div class="container">
+			<div class="top">
+				<div class="container" bind:this={topNavBar}>
 					<div class="buttons">
-						<a href="/" title={locale.routes.home}>
+						<a href="/" title={locale.routes.home} on:click={routerTransition}>
 							<Icon type="home" />
 						</a>
-						<a href="/about?name=sosis">{locale.routes.about}</a>
+						<a href="/about" title={locale.routes.about} on:click={routerTransition}>
+							<Icon type="about" />
+						</a>
 					</div>
 				</div>
 			</div>
 			<div class="bottom" bind:this={bottomNavBar}>
 				<div class="left">
 					<button
-						on:click={() => {
+						on:click={async () => {
+							if (languageTransition) return;
+							languageTransition = true;
+							page.classList.remove("animation");
+							await new Promise((r) => setTimeout(r, 1500));
 							$data.lang =
 								langs[
 									(langs.indexOf($data.lang) + 1) %
 										langs.length
 								];
+							page.classList.add("animation");
+							await new Promise((r) => setTimeout(r, 1500));
+							languageTransition = false;
 						}}
 					>
 						<img src={locale.emoji} alt="Flag" />
@@ -81,6 +105,18 @@
 </div>
 
 <style lang="scss">
+	.h-shape {
+		transition: all 0.4s ease-in-out;
+		width: 65%;
+		height: 100%;
+		background-color: var(--color-secondary);
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+	}
+
 	:global(.main) {
 		display: flex;
 		width: 100%;
@@ -90,7 +126,7 @@
 		& > .left {
 			width: 100%;
 			transform: translateX(-100%);
-			transition: transform 0.5s ease-in-out;
+			transition: transform 1.5s ease-in-out;
 			&:global(.animation) {
 				transform: translateX(0);
 			}
@@ -117,44 +153,49 @@
 				& > .top {
 					display: flex;
 					flex-direction: row;
-					justify-content: flex-end;
-					align-items: flex-end;
+					justify-content: center;
+					align-items: center;
+					padding: 30px;
 					width: 100%;
-					height: 100%;
+					height: calc(100% - 150px);
 					& > .container {
 						border-radius: 10px;
 						display: flex;
 						flex-direction: column;
-						justify-content: flex-end;
+						justify-content: center;
 						align-items: flex-end;
 
 						width: 100%;
 						& > .buttons {
 							display: flex;
 							flex-direction: column;
-							// width: 100%;
 							height: 100%;
 							justify-content: center;
 							align-items: center;
 							padding: 5px;
 							gap: 20px;
-							& > a {
-							:global(svg) {
-								width: 30px;
-								color: #fff;
+
+							a {
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								:global(svg) {
+									width: 30px;
+									color: #fff;
+								}
+
+								text-decoration: none;
+								font-weight: bold;
+								background-color: var(--color-secondary);
+								aspect-ratio: 1/1;
+
+								padding: 15px;
+								border-radius: 100%;
 							}
-
-							text-decoration: none;
-							font-weight: bold;
-							background-color: var(--color-secondary);
-
-							padding: 15px;
-							border-radius: 100%;
-						}
 						}
 
-						transform: translateY(-200px);
-						transition: transform 0.5s ease-in-out;
+						transform: translateY(-100vh);
+						transition: transform 1.5s ease-in-out;
 
 						&:global(.animation) {
 							transform: translateY(0px);
@@ -167,7 +208,13 @@
 					flex-direction: row;
 					justify-content: space-between;
 					align-items: flex-end;
-					width: 100%;
+					width: calc(100% - 30px);
+					padding: 30px;
+					@media screen and (max-width: 768px) {
+						width: calc(100% - 10px);
+						padding: 10px;
+					}
+
 					height: 50px;
 
 					gap: 10%;
@@ -180,8 +227,11 @@
 						padding: 10px;
 						background-color: var(--color-secondary);
 						border-radius: 10px;
-						width: 70px;
 						aspect-ratio: 1/1;
+						width: 70px;
+						@media screen and (max-width: 768px) {
+							width: 40px;
+						}
 
 						& > button {
 							border: none;
@@ -191,18 +241,30 @@
 							background: transparent;
 
 							:global(svg) {
-								width: 50px;
+								width: 40px;
+								@media screen and (max-width: 768px) {
+									height: 20px;
+									width: 20px;
+								}
 								color: #fff;
 							}
 
 							img {
-								width: 50px;
+								width: 40px;
+								@media screen and (max-width: 768px) {
+									height: 20px;
+									width: 20px;
+								}
 							}
 						}
 					}
 
+					& > .left {
+						background-color: var(--color-primary);
+					}
+
 					transform: translateY(100px);
-					transition: transform 0.5s ease-in-out;
+					transition: transform 1.5s ease-in-out;
 
 					&:global(.animation) {
 						transform: translateY(0px);

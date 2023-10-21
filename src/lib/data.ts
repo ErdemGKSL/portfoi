@@ -14,9 +14,9 @@ export const data = writable({
 			},
 			pages: {
 				landing: {
-					title: "Erdem Göksel",
-					subtitle: "Bir yazılım geliştiricisi",
-					whoami: "Ben Erdem, doğma büyüme istanbuldayım, ve yaklaşık 2 yıldır yazılım ile uğraşıyorum, dökümantasyonu olan herhangi bir api ile entegrasyon yapabilirim.\n\nMaltepe üniversitesinde yazılım mühendisliği 3. sınıf öğrencisiyim."
+					subtitle: "Bir backend yazılım geliştiricisi",
+					whoami: "Ben Erdem, doğma büyüme istanbuldayım, ve yaklaşık 3 yıldır yazılım ile uğraşıyorum, dökümantasyonu olan herhangi bir api ile entegrasyon yapabilirim.",
+					whoami_extra: "Maltepe üniversitesinde yazılım mühendisliği 3. sınıf öğrencisiyim."
 				}
 			}
 		},
@@ -29,9 +29,9 @@ export const data = writable({
 			},
 			pages: {
 				landing: {
-					title: "Erdem Göksel",
-					subtitle: "A software developer",
-					whoami: "I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University."
+					subtitle: "A backend software developer",
+					whoami: "I'm Erdem, I was born and raised in istanbul, and I've been coding for about 3 years, I can integrate with any api that has documentation.",
+					whoami_extra: "I'm a 3rd year software engineering student at Maltepe University."
 				}
 			}
 		}
@@ -45,9 +45,9 @@ export const data = writable({
 			};
 			pages: {
 				landing: {
-					title: string;
 					subtitle: string;
 					whoami: string;
+					whoami_extra: string;
 				}
 			}
 		};
