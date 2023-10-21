@@ -11,6 +11,13 @@ export const data = writable({
 				home: "Anasayfa",
 				about: "Hakkımda",
 				settings: "Ayarlar"
+			},
+			pages: {
+				landing: {
+					title: "Erdem Göksel",
+					subtitle: "Bir yazılım geliştiricisi",
+					whoami: "Ben Erdem, doğma büyüme istanbuldayım, ve yaklaşık 2 yıldır yazılım ile uğraşıyorum, dökümantasyonu olan herhangi bir api ile entegrasyon yapabilirim.\n\nMaltepe üniversitesinde yazılım mühendisliği 3. sınıf öğrencisiyim."
+				}
 			}
 		},
 		en: {
@@ -19,6 +26,13 @@ export const data = writable({
 				home: "Home",
 				about: "About",
 				settings: "Settings"
+			},
+			pages: {
+				landing: {
+					title: "Erdem Göksel",
+					subtitle: "A software developer",
+					whoami: "I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University.I'm Erdem, I was born and raised in istanbul, and I've been coding for about 2 years, I can integrate with any api that has documentation.\n\nI'm a 3rd year software engineering student at Maltepe University."
+				}
 			}
 		}
 	} as {
@@ -29,6 +43,13 @@ export const data = writable({
 				about: string;
 				settings: string;
 			};
+			pages: {
+				landing: {
+					title: string;
+					subtitle: string;
+					whoami: string;
+				}
+			}
 		};
 	}
 });

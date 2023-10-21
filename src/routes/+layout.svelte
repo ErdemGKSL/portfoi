@@ -8,6 +8,7 @@
 	let langs = Object.keys($data.i18n) as i18nKeys[];
 	let topNavBar: HTMLDivElement;
 	let bottomNavBar: HTMLDivElement;
+	let page: HTMLDivElement;
 
 	$: locale = $data.i18n[$data.lang];
 
@@ -15,32 +16,40 @@
 		if (browser) {
 			document.body.classList.remove("dark-mode", "light-mode");
 			document.body.classList.add(`${$data.theme}-mode`);
-      localStorage.setItem("theme", $data.theme);
+			localStorage.setItem("theme", $data.theme);
 		}
 	}
 
 	onMount(async () => {
-		$data.theme = (localStorage.getItem("theme") as "dark" | "light") || $data.theme || "light";
+		$data.theme =
+			(localStorage.getItem("theme") as "dark" | "light") ||
+			$data.theme ||
+			"light";
 
 		await tick();
 
 		topNavBar.classList.add("animation");
 		bottomNavBar.classList.add("animation");
+		page.classList.add("animation");
 	});
 </script>
 
 <div class="main">
-	<div class="left">
+	<div class="left" bind:this={page}>
 		<slot />
 	</div>
 
 	<div class="right">
 		<nav>
 			<div class="top" bind:this={topNavBar}>
-				<a href="/" title={locale.routes.home}>
-					<Icon type="home" />
-				</a>
-				<a href="/about?name=sosis">{locale.routes.about}</a>
+				<div class="container">
+					<div class="buttons">
+						<a href="/" title={locale.routes.home}>
+							<Icon type="home" />
+						</a>
+						<a href="/about?name=sosis">{locale.routes.about}</a>
+					</div>
+				</div>
 			</div>
 			<div class="bottom" bind:this={bottomNavBar}>
 				<div class="left">
@@ -72,62 +81,84 @@
 </div>
 
 <style lang="scss">
-	.main {
+	:global(.main) {
 		display: flex;
-		flex-direction: row;
-		height: 100%;
+		width: 100%;
+		min-height: 100%;
 		background-color: var(--color-primary);
 
 		& > .left {
-			flex: 1;
+			width: 100%;
+			transform: translateX(-100%);
+			transition: transform 0.5s ease-in-out;
+			&:global(.animation) {
+				transform: translateX(0);
+			}
 		}
 
 		& > .right {
+			position: absolute;
+			width: 100%;
 			height: 100%;
+			// overflow: hidden;
+			right: 0;
+			bottom: 0;
+
 			& > nav {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 				align-items: center;
 				height: 100%;
-				width: 200px;
+				width: 100%;
 
-				overflow: hidden;
+				// overflow: hidden;
 
 				& > .top {
-					border-radius: 10px;
 					display: flex;
-					flex-direction: column;
-					justify-content: flex-start;
-					align-items: center;
-
+					flex-direction: row;
+					justify-content: flex-end;
+					align-items: flex-end;
 					width: 100%;
+					height: 100%;
+					& > .container {
+						border-radius: 10px;
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-end;
+						align-items: flex-end;
 
-					padding-top: 30px;
-					padding-bottom: 30px;
-					margin-top: 10px;
+						width: 100%;
+						& > .buttons {
+							display: flex;
+							flex-direction: column;
+							// width: 100%;
+							height: 100%;
+							justify-content: center;
+							align-items: center;
+							padding: 5px;
+							gap: 20px;
+							& > a {
+							:global(svg) {
+								width: 30px;
+								color: #fff;
+							}
 
-					gap: 20px;
+							text-decoration: none;
+							font-weight: bold;
+							background-color: var(--color-secondary);
 
-					& > a {
-						:global(svg) {
-							width: 30px;
-							color: #fff;
+							padding: 15px;
+							border-radius: 100%;
+						}
 						}
 
-						text-decoration: none;
-						font-weight: bold;
-            background-color: var(--color-secondary);
+						transform: translateY(-200px);
+						transition: transform 0.5s ease-in-out;
 
-            padding: 15px;
-            border-radius: 100%;
-					}
-
-					transform: translateY(-200px);
-					transition: transform 0.5s ease-in-out;
-
-					&:global(.animation) {
-						transform: translateY(0px);
+						&:global(.animation) {
+							transform: translateY(0px);
+						}
 					}
 				}
 
@@ -149,7 +180,7 @@
 						padding: 10px;
 						background-color: var(--color-secondary);
 						border-radius: 10px;
-						width: 40%;
+						width: 70px;
 						aspect-ratio: 1/1;
 
 						& > button {
