@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%sveltekit.head%
+
+	<style>
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		
+		* {
+			transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+			margin: 0;
+			padding: 0;
+			outline: none;
+			box-sizing: border-box;
+		}
+
+		body.dark-mode {
+			--color-primary: #191d2b;
+			--color-secondary: #27a5ae;
+			--color-white: #ffffff;
+			--color-black: #000;
+			--color-grey0: #f8f8f8;
+			--color-grey-1: #dbe1e8;
+			--color-grey-2: #b2becd;
+			--color-grey-3: #6c7983;
+			--color-grey-4: #454e56;
+			--color-grey-5: #2a2e35;
+			--color-grey-6: #12181b;
+			--br-sm-2: 14px;
+			--box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
+		}
+
+		body.light-mode {
+			--color-primary: #FFFFFF;
+			--color-secondary: #f56666;
+			--color-white: #454e56;
+			--color-black: #000;
+			--color-grey0: #f8f8f8;
+			--color-grey-1: #6c7983;
+			--color-grey-2: #6c7983;
+			--color-grey-3: #6c7983;
+			--color-grey-4: #454e56;
+			--color-grey-5: #f8f8f8;
+			--color-grey-6: #12181b;
+		}
+	</style>
+</head>
+
+<body data-sveltekit-preload-data="hover" class="dark-mode">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
+</html>
