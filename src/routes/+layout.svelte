@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { data, type i18nKeys } from "$lib/data";
-
 	import Icon from "$lib/components/Icon.svelte";
 	import { onMount, tick } from "svelte";
 	import { browser } from "$app/environment";
+	import { afterNavigate, goto } from "$app/navigation";
+	import { page } from "$app/stores";
 
 	let langs = Object.keys($data.i18n) as i18nKeys[];
 	let topNavBar: HTMLDivElement;
 	let bottomNavBar: HTMLDivElement;
-	let page: HTMLDivElement;
+	let mainContent: HTMLDivElement;
+	let languageButton: HTMLDivElement;
 
-	let languageTransition = false;
+	let nowLanguageTransition = false;
+	let nowRouterTransition = false;
 
 	$: locale = $data.i18n[$data.lang];
 
@@ -32,25 +35,53 @@
 
 		topNavBar.classList.add("animation");
 		bottomNavBar.classList.add("animation");
-		page.classList.add("animation");
+		mainContent.classList.add("animation");
+
+		$page.url && onNavigate($page.url);
 	});
 
-	function routerTransition() {
-		topNavBar.classList.remove("animation");
-		// bottomNavBar.classList.remove("animation");
-		// page.classList.remove("animation");
+	function onNavigate(url?: URL) {
+		const buttons = topNavBar.querySelectorAll("button");
+		if (!url) return;
+		buttons.forEach((button) => {
+			if (button.dataset.to === url.pathname) {
+				button.classList.add("selected");
+			} else {
+				button.classList.remove("selected");
+			}
+		});
 
-		setTimeout(() => {
-			topNavBar.classList.add("animation");
-			// bottomNavBar.classList.add("animation");
-			// page.classList.add("animation");
-		}, 750);
+		if (url.pathname !== "/") {
+			const shape = document?.querySelector(".h-shape");
+			shape && shape.classList.add("invisible");
+			languageButton && languageButton.classList.remove("primary-button");
+		} else {
+			const shape = document?.querySelector(".h-shape");
+			shape && shape.classList.remove("invisible");
+			languageButton && languageButton.classList.add("primary-button");
+		}
+	}
+
+	afterNavigate((navigation) => {
+		onNavigate(navigation.to?.url);
+	});
+
+	async function routerTransition(path: string) {
+		if (nowRouterTransition) return;
+		nowRouterTransition = true;
+		mainContent.classList.remove("animation");
+		await new Promise((r) => setTimeout(r, 750));
+		goto(path);
+		mainContent.classList.add("animation");
+		await new Promise((r) => setTimeout(r, 750));
+		nowRouterTransition = false;
 	}
 </script>
 
 <div class="h-shape" />
+
 <div class="main">
-	<div class="left" bind:this={page}>
+	<div class="left" bind:this={mainContent}>
 		<slot />
 	</div>
 
@@ -59,46 +90,58 @@
 			<div class="top">
 				<div class="container" bind:this={topNavBar}>
 					<div class="buttons">
-						<a href="/" title={locale.routes.home} on:click={routerTransition}>
+						<button
+							title={locale.routes.home}
+							data-to="/"
+							on:click={() => routerTransition("/")}
+						>
 							<Icon type="home" />
-						</a>
-						<a href="/about" title={locale.routes.about} on:click={routerTransition}>
+						</button>
+						<button
+							title={locale.routes.about}
+							data-to="/about"
+							on:click={() => routerTransition("/about")}
+						>
 							<Icon type="about" />
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="bottom" bind:this={bottomNavBar}>
-				<div class="left">
+				{#if $page.url.pathname === "/"}
+				<div class="left" bind:this={languageButton}>
 					<button
 						on:click={async () => {
-							if (languageTransition) return;
-							languageTransition = true;
-							page.classList.remove("animation");
-							await new Promise((r) => setTimeout(r, 1500));
+							if (nowLanguageTransition) return;
+							nowLanguageTransition = true;
+							mainContent.classList.remove("animation");
+							await new Promise((r) => setTimeout(r, 750));
 							$data.lang =
 								langs[
 									(langs.indexOf($data.lang) + 1) %
 										langs.length
 								];
-							page.classList.add("animation");
-							await new Promise((r) => setTimeout(r, 1500));
-							languageTransition = false;
+							mainContent.classList.add("animation");
+							await new Promise((r) => setTimeout(r, 750));
+							nowLanguageTransition = false;
 						}}
 					>
 						<img src={locale.emoji} alt="Flag" />
 					</button>
 				</div>
-				<div class="right">
-					<button
-						on:click={() => {
-							$data.theme =
-								$data.theme === "light" ? "dark" : "light";
-						}}
-					>
-						<Icon type="style" />
-					</button>
-				</div>
+				{/if}
+				{#if $page.url.pathname === "/"}
+					<div class="right">
+						<button
+							on:click={() => {
+								$data.theme =
+									$data.theme === "light" ? "dark" : "light";
+							}}
+						>
+							<Icon type="style" />
+						</button>
+					</div>
+				{/if}
 			</div>
 		</nav>
 	</div>
@@ -115,6 +158,11 @@
 		top: 0;
 		z-index: 0;
 		clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+
+		&:global(.invisible) {
+			opacity: 0;
+			// background-color: transparent;
+		}
 	}
 
 	:global(.main) {
@@ -126,7 +174,7 @@
 		& > .left {
 			width: 100%;
 			transform: translateX(-100%);
-			transition: transform 1.5s ease-in-out;
+			transition: transform 0.75s ease-in-out;
 			&:global(.animation) {
 				transform: translateX(0);
 			}
@@ -137,8 +185,8 @@
 			width: 100%;
 			height: 100%;
 			// overflow: hidden;
-			right: 0;
-			bottom: 0;
+			top: 0;
+			left: 0;
 
 			& > nav {
 				display: flex;
@@ -148,8 +196,6 @@
 				height: 100%;
 				width: 100%;
 
-				// overflow: hidden;
-
 				& > .top {
 					display: flex;
 					flex-direction: row;
@@ -157,14 +203,18 @@
 					align-items: center;
 					padding: 30px;
 					width: 100%;
-					height: calc(100% - 150px);
+					height: 100%;
+
+					@media screen and (max-width: 768px) {
+						padding: 2px;
+					}
+
 					& > .container {
 						border-radius: 10px;
 						display: flex;
 						flex-direction: column;
 						justify-content: center;
 						align-items: flex-end;
-
 						width: 100%;
 						& > .buttons {
 							display: flex;
@@ -175,10 +225,12 @@
 							padding: 5px;
 							gap: 20px;
 
-							a {
+							button {
 								display: flex;
 								align-items: center;
 								justify-content: center;
+								cursor: pointer;
+
 								:global(svg) {
 									width: 30px;
 									color: #fff;
@@ -186,16 +238,21 @@
 
 								text-decoration: none;
 								font-weight: bold;
-								background-color: var(--color-secondary);
+								background-color: var(--color-grey-3);
 								aspect-ratio: 1/1;
 
 								padding: 15px;
 								border-radius: 100%;
+								border: none;
+
+								&:global(.selected) {
+									background-color: var(--color-secondary);
+								}
 							}
 						}
 
 						transform: translateY(-100vh);
-						transition: transform 1.5s ease-in-out;
+						transition: transform 0.75s ease-in-out;
 
 						&:global(.animation) {
 							transform: translateY(0px);
@@ -208,18 +265,21 @@
 					flex-direction: row;
 					justify-content: space-between;
 					align-items: flex-end;
-					width: calc(100% - 30px);
+					height: 100px !important;
+					width: 100vw !important;
 					padding: 30px;
 					@media screen and (max-width: 768px) {
-						width: calc(100% - 10px);
-						padding: 10px;
+						padding: 20px;
 					}
 
 					height: 50px;
-
 					gap: 10%;
 
 					& div {
+						&:global(.primary-button) {
+							background-color: var(--color-primary);
+						}
+
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -259,12 +319,8 @@
 						}
 					}
 
-					& > .left {
-						background-color: var(--color-primary);
-					}
-
 					transform: translateY(100px);
-					transition: transform 1.5s ease-in-out;
+					transition: transform 0.75s ease-in-out;
 
 					&:global(.animation) {
 						transform: translateY(0px);
