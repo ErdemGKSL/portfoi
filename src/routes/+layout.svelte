@@ -182,6 +182,7 @@
 
 		& > .right {
 			position: fixed;
+			pointer-events: none;
 			width: 100%;
 			height: 100%;
 			// overflow: hidden;
@@ -230,7 +231,7 @@
 								align-items: center;
 								justify-content: center;
 								cursor: pointer;
-
+								pointer-events: all;
 								:global(svg) {
 									width: 30px;
 									color: #fff;
@@ -299,6 +300,7 @@
 							cursor: pointer;
 							width: 100%;
 							background: transparent;
+							pointer-events: all;
 
 							:global(svg) {
 								width: 40px;

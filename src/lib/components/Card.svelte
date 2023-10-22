@@ -24,6 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: transform 0.5s ease-in-out;
 
     & > :global(h1) {
       font-size: 3rem;
@@ -49,8 +50,7 @@
     }
 
     &:global(:hover) {
-      transform: scale(2.1);
-      transition: transform 0.5s ease-in-out;
+      transform: scale(1.2);
     }
 
     @media screen and (max-width: 1000px) {
