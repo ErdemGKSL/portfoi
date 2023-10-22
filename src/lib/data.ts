@@ -53,6 +53,18 @@ export const data = writable({
 							year: "2009 - 2013",
 							grade: "İlkokul"
 						}
+					],
+
+					my_certificates: "Sertifikalarım",
+					my_certificates_data: [
+						{
+							name: "Pascal Sınavında Üstünlük Belgesi",
+							image: "https://cdn.discordapp.com/attachments/685842268606693376/1165758669066084362/394863391_1031097251537617_2409289332824342684_n.png?ex=6548045d&is=65358f5d&hm=d49deffb9ed2a1a41c48f563f8da09b6af829dca34857546dab9fe7cf047f07b&"
+						},
+						{
+							name: "Pearson Onaylı MUN Sertifikası",
+							image: "https://cdn.discordapp.com/attachments/685842268606693376/1165758610136125521/395213976_1791800104594342_5884365559336959065_n.png?ex=6548044f&is=65358f4f&hm=78a62b463033680cb2fe54170ca8054dc2d9efecee7372c453c7141f52c0b531&"
+						}
 					]
 				}
 			}
@@ -107,6 +119,17 @@ export const data = writable({
 						}
 					],
 					my_certificates: "My certificates",
+					my_certificates_data: [
+						{
+							name: "Distinction Certificate in Pascal Exam",
+							image: "https://cdn.discordapp.com/attachments/685842268606693376/1165758669066084362/394863391_1031097251537617_2409289332824342684_n.png?ex=6548045d&is=65358f5d&hm=d49deffb9ed2a1a41c48f563f8da09b6af829dca34857546dab9fe7cf047f07b&"
+						},
+						{
+							name: "Pearson Approved MUN Certificate",
+							image: "https://cdn.discordapp.com/attachments/685842268606693376/1165758610136125521/395213976_1791800104594342_5884365559336959065_n.png?ex=6548044f&is=65358f4f&hm=78a62b463033680cb2fe54170ca8054dc2d9efecee7372c453c7141f52c0b531&"
+						}
+					]
+
 				}
 			}
 		}
@@ -145,10 +168,17 @@ export const data = writable({
 						year: string;
 						grade: string;
 					}[]
+
+					my_certificates: string;
+					my_certificates_data: {
+						name: string;
+						image: string;
+					}[]
 				}
 			}
 		};
-	}
+	},
+	popUpUrl: null as string | null
 });
 
 export type i18nKeys = "tr" | "en";

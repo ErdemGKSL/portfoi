@@ -76,7 +76,32 @@
 		await new Promise((r) => setTimeout(r, 750));
 		nowRouterTransition = false;
 	}
+
+	let popUp = null as HTMLDivElement | null;
+
+	$: {
+		if ($data.popUpUrl) {
+			popUp?.classList.remove("disabled");
+		} else {
+			popUp?.classList.add("disabled");
+		}
+	}
 </script>
+
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div
+	class="pop-up disabled"
+	bind:this={popUp}
+	on:click={async () => {
+		popUp?.classList.add("disabled");
+		let url = $data.popUpUrl;
+		await new Promise((resolve) => setTimeout(resolve, 750));
+		if ($data.popUpUrl === url) $data.popUpUrl = "";
+	}}
+>
+	<img src={$data.popUpUrl} alt="pop-up" />
+</div>
 
 <div class="h-shape" />
 
@@ -116,26 +141,26 @@
 			</div>
 			<div class="bottom" bind:this={bottomNavBar}>
 				{#if $page.url.pathname === "/"}
-				<div class="left" bind:this={languageButton}>
-					<button
-						on:click={async () => {
-							if (nowLanguageTransition) return;
-							nowLanguageTransition = true;
-							mainContent.classList.remove("animation");
-							await new Promise((r) => setTimeout(r, 750));
-							$data.lang =
-								langs[
-									(langs.indexOf($data.lang) + 1) %
-										langs.length
-								];
-							mainContent.classList.add("animation");
-							await new Promise((r) => setTimeout(r, 750));
-							nowLanguageTransition = false;
-						}}
-					>
-						<img src={locale.emoji} alt="Flag" />
-					</button>
-				</div>
+					<div class="left" bind:this={languageButton}>
+						<button
+							on:click={async () => {
+								if (nowLanguageTransition) return;
+								nowLanguageTransition = true;
+								mainContent.classList.remove("animation");
+								await new Promise((r) => setTimeout(r, 750));
+								$data.lang =
+									langs[
+										(langs.indexOf($data.lang) + 1) %
+											langs.length
+									];
+								mainContent.classList.add("animation");
+								await new Promise((r) => setTimeout(r, 750));
+								nowLanguageTransition = false;
+							}}
+						>
+							<img src={locale.emoji} alt="Flag" />
+						</button>
+					</div>
 				{/if}
 				{#if $page.url.pathname === "/"}
 					<div class="right">
@@ -155,6 +180,35 @@
 </div>
 
 <style lang="scss">
+	.pop-up {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		opacity: 1;
+		z-index: 1000;
+
+		&:global(.disabled) {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		background-color: rgba(0, 0, 0, 0.5);
+		transition: opacity 0.75s ease-in-out;
+
+		& > img {
+			max-width: 90%;
+			max-height: 90%;
+			width: 90%;
+			object-fit: contain;
+		}
+	}
 	.h-shape {
 		transition: all 0.4s ease-in-out;
 		width: 65%;
