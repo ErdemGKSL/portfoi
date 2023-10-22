@@ -104,6 +104,13 @@
 						>
 							<Icon type="about" />
 						</button>
+						<button
+							title={locale.routes.education}
+							data-to="/education"
+							on:click={() => routerTransition("/education")}
+						>
+							<Icon type="education" />
+						</button>
 					</div>
 				</div>
 			</div>

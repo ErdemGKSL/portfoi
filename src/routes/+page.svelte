@@ -42,9 +42,16 @@
 				width: 450px;
       }
 
+			// gray
 			img {
 				width: 100%;
 				object-fit: contain;
+				filter: grayscale(100%);
+				transition: filter 0.3s ease-in-out;
+
+				&:hover {
+					filter: grayscale(0%);
+				}
 			}
 		}
 

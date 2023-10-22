@@ -2,8 +2,15 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="Erdem'in Portfolyosu" property="og:title" />
+	<meta content="Erdem'in portfolyosuna hoş geldiniz! Burada erdem hakkında bolca bilgi edinebilir ve onu tanıma şansını yakalayabilirsiniz ^^" property="og:description" />
+	<meta content="https://erdemg.dev/" property="og:url" />
+	<meta content="https://cdn.discordapp.com/attachments/685842268606693376/1146833690501070999/IMG_20230830_182112.jpg" property="og:image" />
+	<meta content="#53c5d1" data-react-helmet="true" name="theme-color" />
+	<link rel="icon" href="%sveltekit.assets%/icon.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	%sveltekit.head%
 
@@ -20,13 +27,25 @@
 			display: flex;
 		}
 
-		
+
 		* {
 			transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 			margin: 0;
 			padding: 0;
 			outline: none;
 			box-sizing: border-box;
+		}
+
+		h1, h2, h3, h4, h5, h6, p, .name, .percent {
+			pointer-events: none;
+			cursor: none;
+
+			-webkit-touch-callout: none; 
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 
 		body.dark-mode {

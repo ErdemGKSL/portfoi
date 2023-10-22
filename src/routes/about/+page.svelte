@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from "$lib/components/Card.svelte";
+	import Card from "./components/Card.svelte";
 	import { data } from "$lib/data";
 	let locale: (typeof $data)["i18n"]["tr"]["pages"]["about"];
 	$: locale = $data.i18n[$data.lang].pages.about;

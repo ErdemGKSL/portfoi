@@ -10,7 +10,7 @@ export const data = writable({
 			routes: {
 				home: "Anasayfa",
 				about: "Hakkımda",
-				settings: "Ayarlar"
+				education: "Eğitim"
 			},
 			pages: {
 				landing: {
@@ -28,6 +28,32 @@ export const data = writable({
 					quality: "Kalite",
 					abilities: "Yetenekler",
 					other: "Diğer"
+				},
+				education: {
+					title: "Eğitim",
+					my_education_history: "Eğitim geçmişim",
+					my_education_history_data: [
+						{
+							school: "Maltepe Üniversitesi",
+							year: "2021 - Devam ediyor",
+							grade: "Lisans"
+						},
+						{
+							school: "Bostancı Doğa Anadolu Lisesi",
+							year: "2017 - 2021",
+							grade: "Lise"
+						},
+						{
+							school: "Kartal Doğa Koleji",
+							year: "2013 - 2017",
+							grade: "Ortaokul"
+						},
+						{
+							school: "Ahmet Rasim İlköğretim Okulu",
+							year: "2009 - 2013",
+							grade: "İlkokul"
+						}
+					]
 				}
 			}
 		},
@@ -36,7 +62,7 @@ export const data = writable({
 			routes: {
 				home: "Home",
 				about: "About",
-				settings: "Settings"
+				education: "Education"
 			},
 			pages: {
 				landing: {
@@ -54,6 +80,32 @@ export const data = writable({
 					quality: "Quality",
 					abilities: "Abilities",
 					other: "Other"
+				},
+				education: {
+					title: "Education",
+					my_education_history: "My education history",
+					my_education_history_data: [
+						{
+							school: "Maltepe University",
+							year: "2021 - Present",
+							grade: "Bachelor's degree"
+						},
+						{
+							school: "Bostancı Doğa Anadolu High School",
+							year: "2017 - 2021",
+							grade: "High School"
+						},
+						{
+							school: "Kartal Doğa College",
+							year: "2013 - 2017",
+							grade: "Middle School"
+						},
+						{
+							school: "Ahmet Rasim Primary School",
+							year: "2009 - 2013",
+							grade: "Primary School"
+						}
+					]
 				}
 			}
 		}
@@ -63,7 +115,7 @@ export const data = writable({
 			routes: {
 				home: string;
 				about: string;
-				settings: string;
+				education: string;
 			};
 			pages: {
 				landing: {
@@ -83,6 +135,15 @@ export const data = writable({
 
 					abilities: string;
 					other: string;
+				}
+				education: {
+					title: string;
+					my_education_history: string;
+					my_education_history_data: {
+						school: string;
+						year: string;
+						grade: string;
+					}[]
 				}
 			}
 		};
