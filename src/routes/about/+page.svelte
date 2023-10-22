@@ -3,6 +3,7 @@
 	import { data } from "$lib/data";
 	let locale: (typeof $data)["i18n"]["tr"]["pages"]["about"];
 	$: locale = $data.i18n[$data.lang].pages.about;
+
 </script>
 
 <div class="content">
