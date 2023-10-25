@@ -70,8 +70,7 @@
       padding: 0.2rem 1rem;
       border-radius: 0 0 1rem 1rem;
       border: 2px solid var(--color-secondary);
-
-      margin-top: -2px;
+      border-top: none;
 
       & > p {
         font-size: 1.5rem;
