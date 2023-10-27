@@ -8,7 +8,7 @@
 <div class="info">
   <div class="left">
 		<img
-			src="https://cdn.discordapp.com/attachments/685842268606693376/1165288691405705306/9dcce394.png?ex=65464eaa&is=6533d9aa&hm=e41e6c1021815827fbdac5775dcd0b1256fba888ad0623ea75602e9ef25dc79f&"
+			src="https://media.discordapp.net/attachments/685842268606693376/1165288691405705306/9dcce394.png?ex=65464eaa&is=6533d9aa&hm=e41e6c1021815827fbdac5775dcd0b1256fba888ad0623ea75602e9ef25dc79f&=&width=352&height=468"
 			alt="erdem"
 		/>
 	</div>
