@@ -19,12 +19,12 @@
 				<h2>{locale.year_of_exp}</h2>
 			</Card>
 			<Card>
-				<h1>50+</h1>
-				<h2>{locale.projects}</h2>
+				<h1>100%</h1>
+				<h2>{locale.systematic_code}</h2>
 			</Card>
 			<Card>
-				<h1>25+</h1>
-				<h2>{locale.happy_clients}</h2>
+				<h1>100%</h1>
+				<h2>{locale.performance_based}</h2>
 			</Card>
 			<Card>
 				<h1>100%</h1>
@@ -48,6 +48,22 @@
 				<div class="bar">
 					<div class="percent">100%</div>
 					<div class="progress-bar"><span class="progress" id="ts" /></div>
+				</div>
+			</div>
+
+			<div class="ability">
+				<div class="name">Svelte/SvelteKit</div>
+				<div class="bar">
+					<div class="percent">95%</div>
+					<div class="progress-bar"><span class="progress" id="sveltekit" /></div>
+				</div>
+			</div>
+
+			<div class="ability">
+				<div class="name">HTML/CSS</div>
+				<div class="bar">
+					<div class="percent">90%</div>
+					<div class="progress-bar"><span class="progress" id="htmlcss" /></div>
 				</div>
 			</div>
 
@@ -82,6 +98,7 @@
 					<div class="progress-bar"><span class="progress" id="rust" /></div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
@@ -301,7 +318,15 @@
                   width: 90%;
                 }
 
-                &#sql {
+								&#sveltekit {
+									width: 95%;
+								}
+
+								&#htmlcss {
+									width: 90%;
+								}
+
+								&#sql {
                   width: 75%;
                 }
 

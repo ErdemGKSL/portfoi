@@ -23,8 +23,8 @@ export const data = writable({
 					title: "Hakkımda Bilgiler",
 					description: "Ben profesyonel bir backend developer'ım. Projelerimi sıfırdan ve ihtiyaca göre kodlarım, socket veya http gibi her türlü istekleri karşılayabilirim. Database için genelde postgresql kullanırım, performans konusunda hiç endişe etmenize gerek kalmadan akıcı bir backend sağlarım.",
 					year_of_exp: "Deneyim yılı",
-					projects: "Projeler",
-					happy_clients: "Mutlu müşteriler",
+					systematic_code: "Sistematik kod",
+					performance_based: "Performans",
 					quality: "Kalite",
 					abilities: "Yetenekler",
 					other: "Diğer"
@@ -87,8 +87,8 @@ export const data = writable({
 					title: "Here i am",
 					description: "I'm a professional backend developer. I code my projects from scratch and according to the need, I can meet any kind of requests such as socket or http. I usually use postgresql for the database, I provide a fluent backend without worrying about performance.",
 					year_of_exp: "Years of experience",
-					projects: "Projects",
-					happy_clients: "Happy clients",
+					systematic_code: "Systematic Code",
+					performance_based: "Performance",
 					quality: "Quality",
 					abilities: "Abilities",
 					other: "Other"
@@ -153,8 +153,8 @@ export const data = writable({
 					description: string;
 
 					year_of_exp: string;
-					projects: string;
-					happy_clients: string;
+					systematic_code: string;
+					performance_based: string;
 					quality: string;
 
 					abilities: string;
