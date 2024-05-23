@@ -43,15 +43,16 @@
 	function onNavigate(url?: URL) {
 		const buttons = topNavBar.querySelectorAll("button");
 		if (!url) return;
+		const pathname = (url.pathname.endsWith("/") && url.pathname.length > 1) ? url.pathname.slice(0, -1) : url.pathname;
 		buttons.forEach((button) => {
-			if (button.dataset.to === url.pathname) {
+			if (button.dataset.to === pathname) {
 				button.classList.add("selected");
 			} else {
 				button.classList.remove("selected");
 			}
 		});
 
-		if (url.pathname !== "/") {
+		if (pathname !== "/") {
 			const shape = document?.querySelector(".h-shape");
 			shape && shape.classList.add("invisible");
 			languageButton && languageButton.classList.remove("primary-button");
