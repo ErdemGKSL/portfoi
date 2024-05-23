@@ -35,8 +35,8 @@ export const data = writable({
 					my_education_history_data: [
 						{
 							school: "Maltepe Üniversitesi",
-							year: "2021 - Şuan",
-							grade: "Lisans"
+							year: "2021 - 2025",
+							grade: "Lisans + Öğrenci Asistanlık"
 						},
 						{
 							school: "Bostancı Doğa Anadolu Lisesi",
