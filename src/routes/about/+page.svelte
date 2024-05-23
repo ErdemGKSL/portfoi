@@ -36,7 +36,7 @@
 		<h1>{locale.abilities}</h1>
 		<div class="abilities">
 			<div class="ability">
-				<div class="name">Node.js</div>
+				<div class="name">Node.js/Bun</div>
 				<div class="bar">
 					<div class="percent">100%</div>
 					<div class="progress-bar"><span class="progress" id="node" /></div>
@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="ability">
-				<div class="name">Typescript (Node.js)</div>
+				<div class="name">Typescript</div>
 				<div class="bar">
 					<div class="percent">100%</div>
 					<div class="progress-bar"><span class="progress" id="ts" /></div>
@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="ability">
-				<div class="name">HTML/CSS</div>
+				<div class="name">HTML & (Native CSS | Tailwind) </div>
 				<div class="bar">
 					<div class="percent">90%</div>
 					<div class="progress-bar"><span class="progress" id="htmlcss" /></div>
@@ -76,26 +76,26 @@
 			</div>
 
 			<div class="ability">
-				<div class="name">{locale.other} Sql</div>
+				<div class="name">Rust</div>
 				<div class="bar">
 					<div class="percent">75%</div>
-					<div class="progress-bar"><span class="progress" id="sql"/></div>
+					<div class="progress-bar"><span class="progress" id="rust"/></div>
 				</div>
 			</div>
 
 			<div class="ability">
 				<div class="name">Kotlin/Java</div>
 				<div class="bar">
-					<div class="percent">60%</div>
+					<div class="percent">50%</div>
 					<div class="progress-bar"><span class="progress" id="java" /></div>
 				</div>
 			</div>
 
 			<div class="ability">
-				<div class="name">Rust</div>
+				<div class="name">NativeScript</div>
 				<div class="bar">
-					<div class="percent">20%</div>
-					<div class="progress-bar"><span class="progress" id="rust" /></div>
+					<div class="percent">50%</div>
+					<div class="progress-bar"><span class="progress" id="ns" /></div>
 				</div>
 			</div>
 
@@ -331,13 +331,16 @@
                 }
 
                 &#java {
-                  width: 60%;
+                  width: 50%;
                 }
 
                 &#rust {
-                  width: 20%;
+                  width: 75%;
                 }
 
+								&#ns {
+                  width: 50%;
+                }
 							}
 						}
 					}
