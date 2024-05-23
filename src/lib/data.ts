@@ -100,7 +100,7 @@ export const data = writable({
 						{
 							school: "Maltepe University",
 							year: "2021 - Present",
-							grade: "Bachelor's degree"
+							grade: "Bachelor's degree + Student Assistantship"
 						},
 						{
 							school: "Bostancı Doğa High School",
