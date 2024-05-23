@@ -28,7 +28,7 @@
 			/>
 		{/each}
 	</div>
-	<h2>
+	<!-- <h2>
 		{locale.my_certificates}
 	</h2>
 	<div class="sertificates">
@@ -41,7 +41,7 @@
 				}}	
 			/>	
 		{/each}
-	</div>
+	</div> -->
 </div>
 
 <style lang="scss">
